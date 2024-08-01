@@ -17,6 +17,9 @@ from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage
 from rest_framework import viewsets
 
+def home(request):
+    return render(request, 'home.html')
+    
 # Create your views here.   
 @permission_classes([IsManager])  
 @throttle_classes([UserRateThrottle])  
