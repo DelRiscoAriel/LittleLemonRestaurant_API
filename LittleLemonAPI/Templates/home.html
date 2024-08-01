@@ -1,0 +1,297 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Documentation</title>
+</head>
+<body>
+    <h1 style="text-align: center; font-size: 30px;">Description</h1>
+    <p style="text-align: center; font-size: 20px;"> This ia an API project for a restaurant. People with different roles will be able to browse, add and edit menu items, place orders, browse orders, assign delivery crew to orders and finally deliver the orders. Throttling, filtering, pagination and sorting capabilities are implemented. </p>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <h1 class="heading">Links</h1>
+                </th>
+                <th>
+                    <h1 class="heading">Function</h1>
+                </th>
+                <th>
+                    <h1 class="heading">Sample Input</h1>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <h2 class="address">admin/ </h2>
+                </td>
+                <td>
+                    <p class="description"> Adim Interface to manage the API. </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2 class="address"> auth/users/ </h2>
+                </td>
+                <td>
+                    <p class="description"> A super user or manager can List all user accounts, while others can only List their account. Also to reguister new users. </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2 class="address">auth/users/me/</h2>
+                </td>
+                <td>
+                    <p class="description">List the current user account. Also to Update or Delete account.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2 class="address">auth/token/login/</h2>
+                </td>
+                <td>
+                    <p class="description">Generates access tokens that can be used in other API calls providing the correct username and password</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2><a href="{% url 'category' %}" class="address">api/categories</a> </h2>
+                </td>
+                <td>
+                    <p class="description">A super user or manager user can List and Create Categories, while other can only List Categories</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2 class="address">api/categories/{Category ID Number} </h2>
+                </td>
+                <td>
+                    <p class="description">A super user or manager user can List, Update or Delete the Category, while other can only List the Category</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2><a href="{% url 'menu-items' %}" class="address">api/menu-items</a></h2>
+                </td>
+                <td>
+                    <p class="description">A super user or manager user can List and Create Menu Items, while other can only List Menu Items</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2 class="address">api/menu-items/{Menu Item ID Number} </h2>
+                </td>
+                <td>
+                    <p class="description">A super user or manager user can List, Update or Delete the Menu Item, while other can only List Menu Item</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2><a href="{% url 'groups/manager/users' %}" class="address">api/groups/manager/users</a></h2>
+                </td>
+                <td>
+                    <p class="description">Only super users and managers can List, Add or Remove users from the Manager Group</p>
+                </td>
+                <td>
+                    <p class="sampleinput">{"username" : "User Name"}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2><a href="{% url 'groups/delivery-crew/users' %}" class="address">api/groups/delivery-crew/users</a></h2>
+                </td>
+                <td>
+                    <p class="description">Only super users and managers can List, Add or Remove users from the Delivery Group</p>
+                </td>
+                <td>
+                    <p class="sampleinput">{"username" : "User Name"}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2><a href="{% url 'cartManagemnet' %}" class="address">cart/menu-items</a></h2>
+                </td>
+                <td>
+                    <p class="description">User can List, Add or Remove Menu Items from their Cart</p>
+                </td>
+                <td>
+                    <p class="sampleinput">{"menuitem_id" : Menu Item ID,<br> "quantity" : Number of Items}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2><a href="{% url 'orders' %}" class="address">orders</a></h2>
+                </td>
+                <td>
+                    <p class="description">Users can List their Orders and Create an Order from their Cart with an empty POST request</p>
+                    <p class="description">Deliveries can all List the Orders assigned to them</p>
+                    <p class="description">Managers can List all Orders</p>
+                    <p class="description">To paginate add ?perpage=<b>DesiredItemsPerPage</b>&page=<b>PageNumber</b></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h2 class="address">orders/{Order ID Number}</h2>
+                </td>
+                <td>
+                    <p class="description">Users can List the order if it is theirs</p>
+                    <p class="description">Deliveris can List the Order if it is assigned to them and Update the status of the Order</p>
+                    <p class="description">Managers can List the Order, Assign a Delivery to the order and Delete the Order</p>
+                </td>
+                <td>
+                    <p class="sampleinput"> <b>For Deliveries</b> <br> {"status" : False or Trues} <br><br> <b>For Managers</b> <br> {"delivery_id" : Delivery User ID}</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h1 style="text-align: center;"><br>Current Users</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <h1 class="heading">ID</h1>
+                </th>
+                <th>
+                    <h1 class="heading">Username</h1>
+                </th>
+                <th>
+                    <h1 class="heading">Password</h1>
+                </th>
+                <th>
+                    <h1 class="heading">Token</h1>
+                </th>
+                <th>
+                    <h1 class="heading">Role</h1>
+                </th>
+            </tr>
+            <tbody>
+                <tr>
+                    <td>
+                        <p class="description">1 </p>
+                    </td>
+                    <td>
+                        <p class="description">manager </p>
+                    </td>
+                    <td>
+                        <p class="description"> LittleLemonFinal </p>
+                    </td>
+                    <td>
+                        <p class="description"> 2964eb19c8932a011e13f114a93a74a340300ee2 </p>
+                    </td>
+                    <td>
+                        <p class="description"> Manager </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="description">5 </p>
+                    </td>
+                    <td>
+                        <p class="description">manager2 </p>
+                    </td>
+                    <td>
+                        <p class="description"> LittleLemonFinal </p>
+                    </td>
+                    <td>
+                        <p class="description"> b2bd5b5d4c535d27a37a64d3256230d805c65294 </p>
+                    </td>
+                    <td>
+                        <p class="description"> Manager </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="description">2 </p>
+                    </td>
+                    <td>
+                        <p class="description">deliveryCrew </p>
+                    </td>
+                    <td>
+                        <p class="description"> LittleLemonFinal </p>
+                    </td>
+                    <td>
+                        <p class="description"> c814b35baf3140f23fc8098be6c8535eb6e6a19d </p>
+                    </td>
+                    <td>
+                        <p class="description"> Delivery Crew </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="description">7 </p>
+                    </td>
+                    <td>
+                        <p class="description">deliveryCrew2 </p>
+                    </td>
+                    <td>
+                        <p class="description"> LittleLemonFinal </p>
+                    </td>
+                    <td>
+                        <p class="description"> 8af77846b034b9556dbd9015636b2c22919e7bbf </p>
+                    </td>
+                    <td>
+                        <p class="description"> Delivery Crew </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="description">3 </p>
+                    </td>
+                    <td>
+                        <p class="description">customer </p>
+                    </td>
+                    <td>
+                        <p class="description"> LittleLemonFinal </p>
+                    </td>
+                    <td>
+                        <p class="description"> bc38c348fac4a1a761b4d56fe4793df9e334b75e </p>
+                    </td>
+                    <td>
+                        <p class="description"> Customer </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="description">6 </p>
+                    </td>
+                    <td>
+                        <p class="description">customer1 </p>
+                    </td>
+                    <td>
+                        <p class="description"> LittleLemonFinal </p>
+                    </td>
+                    <td>
+                        <p class="description"> 92b3b7357934ec98b590f12e63ed65617d54d797 </p>
+                    </td>
+                    <td>
+                        <p class="description"> Customer </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="description">8 </p>
+                    </td>
+                    <td>
+                        <p class="description">customer3 </p>
+                    </td>
+                    <td>
+                        <p class="description"> LittleLemonFinal </p>
+                    </td>
+                    <td>
+                        <p class="description"> db72ae7da0df5d40450f3ece67996f9459c46067 </p>
+                    </td>
+                    <td>
+                        <p class="description"> Customer </p>
+                    </td>
+                </tr>
+            </tbody>
+        </thead>
+    </table>
+    <h1 style="text-align: center;">Created by Ariel del Risco</h1>
+</body>
+</html>
