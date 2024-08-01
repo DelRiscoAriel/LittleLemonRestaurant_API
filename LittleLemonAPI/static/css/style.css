@@ -1,0 +1,24 @@
+table, th, td {
+    border: 3px solid black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.heading{
+    margin-top: 1px;
+    margin-bottom: 0px;
+}
+.address {
+    margin: 10px;
+}
+
+.description {
+    font-size: 17px;
+    margin: 10px;
+}
+
+.sampleinput {
+    font-size: 15px;  
+    margin: 10px;  
+}
