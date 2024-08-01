@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-rni4przo#j49qi1gej909^ty9__vjr(nny*-j+7mahy@td@1jr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['littlelemonrestaurant-api.onrender.com']
 
 
 # Application definition
